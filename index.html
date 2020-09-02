@@ -9,10 +9,10 @@
   <body>
     <div id="app">
       <button v-on:click="handleAdd">+</button>
-      <div v-if="isAdd" class="box">
+      <div v-if="isAdd || isSubstract" class="box">
         <p>Komentar Score {{score}}</p>
       </div>
-      <div v-else="isAdd" class="box">
+      <div v-else="isAdd || isSubstract" class="box">
         <p>Komentar Score {{score}}</p>
       </div>
       <button v-on:click="handleSubstract">-</button>
@@ -24,7 +24,7 @@
     el: "#app",
     data: {
       isAdd: true,
-      isSubstract: true,
+      isSubstract: false,
       score: 0,
     },
     methods: {
@@ -38,9 +38,9 @@
       },
       handleSubstract() {
         if (this.isSubstract == true) {
-          this.score = this.score - 1;
-        } else {
           this.score = this.score + 1;
+        } else {
+          this.score = this.score - 1;
         }
         this.isSubstract = !this.isSubstract;
       },
