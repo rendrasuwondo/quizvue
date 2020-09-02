@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="handleAdd">+</button>
+      <div v-if="isAdd" class="box">
+        <p>Komentar Score {{score}}</p>
+      </div>
+      <div v-else="isAdd" class="box">
+        <p>Komentar Score {{score}}</p>
+      </div>
+      <button v-on:click="handleSubstract">-</button>
+    </div>
+  </body>
+</html>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      isAdd: true,
+      isSubstract: true,
+      score: 0,
+    },
+    methods: {
+      handleAdd() {
+        if (this.isAdd == true) {
+          this.score = this.score + 1;
+        } else {
+          this.score = this.score - 1;
+        }
+        this.isAdd = !this.isAdd;
+      },
+      handleSubstract() {
+        if (this.isSubstract == true) {
+          this.score = this.score - 1;
+        } else {
+          this.score = this.score + 1;
+        }
+        this.isSubstract = !this.isSubstract;
+      },
+    },
+  });
+</script>
